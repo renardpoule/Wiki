@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chaussette orpheline — Wikipédouille</title>
+<!--
+  GABARIT « ENCYCLOPÉDIE » POUR BLOGS ET PAGES HUMORISTIQUES
+  ----------------------------------------------------------
+  Pour faire un nouvel article : copie ce fichier et modifie
+  uniquement ce qui est entre les commentaires  ✏️ À MODIFIER.
+  Le sommaire (à gauche) se génère tout seul à partir des <h2>/<h3>.
+  Les notes [1], [2]… : <sup class="ref"><a href="#note-1">[1]</a></sup>
+  et un <li id="note-1"> dans la section « Notes et références ».
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text: #202122;
+    --muted: #54595d;
+    --border: #a2a9b1;
+    --border-light: #c8ccd1;
+    --link: #3366cc;
+    --link-visited: #795cb2;
+    --link-new: #d73333;
+    --box-bg: #f8f9fa;
+    --banner-bg: #fef6e7;
+    --banner-border: #fc3;
+    --tab-active: #202122;
+    --serif: "Linux Libertine", "Georgia", "Times", "Source Serif Pro", serif;
+    --sans: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Lato", "Helvetica", "Arial", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101418; --bg-alt: #1a1d21; --text: #eaecf0; --muted: #a2a9b1;
+      --border: #54595d; --border-light: #3a3f44; --link: #88a3e8;
+      --link-visited: #a799cd; --link-new: #fd7865; --box-bg: #1a1d21;
+      --banner-bg: #2a2416; --banner-border: #8a6d1e; --tab-active: #eaecf0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101418; --bg-alt: #1a1d21; --text: #eaecf0; --muted: #a2a9b1;
+    --border: #54595d; --border-light: #3a3f44; --link: #88a3e8;
+    --link-visited: #a799cd; --link-new: #fd7865; --box-bg: #1a1d21;
+    --banner-bg: #2a2416; --banner-border: #8a6d1e; --tab-active: #eaecf0;
+  }
+
+  * { box-sizing: border-box; }
+  html { font-size: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 0.875rem; line-height: 1.6;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:visited { color: var(--link-visited); }
+  a.new { color: var(--link-new); }
+
+  /* ---------- En-tête ---------- */
+  .header {
+    display: flex; align-items: center; gap: 16px;
+    max-width: 1440px; margin: 0 auto; padding: 8px 24px;
+  }
+  .burger { background: none; border: 0; color: var(--text); font-size: 20px; cursor: pointer; padding: 6px; border-radius: 2px; }
+  .burger:hover { background: var(--bg-alt); }
+  .logo { display: flex; align-items: center; gap: 10px; color: var(--text) !important; text-decoration: none !important; }
+  .logo-globe { width: 46px; height: 46px; flex: none; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-name { font-family: var(--serif); font-size: 1.35rem; letter-spacing: .02em; font-variant: small-caps; }
+  .logo-tag { font-family: var(--serif); font-size: .78rem; color: var(--muted); }
+  .search { flex: 1; max-width: 560px; display: flex; }
+  .search input {
+    flex: 1; padding: 6px 10px; font: inherit; color: var(--text); background: var(--bg);
+    border: 1px solid var(--border); border-right: 0; border-radius: 2px 0 0 2px;
+  }
+  .search button {
+    padding: 6px 12px; font: inherit; font-weight: bold; color: var(--text); background: var(--bg-alt);
+    border: 1px solid var(--border); border-radius: 0 2px 2px 0; cursor: pointer;
+  }
+  .user-links { margin-left: auto; display: flex; gap: 14px; font-size: .8rem; white-space: nowrap; }
+
+  /* ---------- Mise en page ---------- */
+  .page { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 24px; max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+  .sidebar { position: sticky; top: 12px; align-self: start; padding-top: 16px; font-size: .82rem; }
+  .sidebar h4 { margin: 0 0 6px; font-size: .82rem; color: var(--muted); font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; }
+  .sidebar ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .sidebar li { margin: 4px 0; }
+  .toc li.lvl3 { padding-left: 12px; }
+  .toc a.active { color: var(--text); font-weight: bold; }
+  .theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text); font: inherit; padding: 3px 8px; border-radius: 2px; cursor: pointer; }
+
+  main { min-width: 0; padding-bottom: 48px; }
+
+  h1.title {
+    font-family: var(--serif); font-weight: normal; font-size: 1.85rem; line-height: 1.3;
+    margin: 16px 0 0; padding-bottom: 4px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .langs { font-family: var(--sans); font-size: .8rem; color: var(--link); cursor: pointer; }
+
+  .tabs { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); font-size: .82rem; flex-wrap: wrap; }
+  .tabs div { display: flex; gap: 18px; }
+  .tabs a { display: inline-block; padding: 8px 0 6px; color: var(--link); border-bottom: 2px solid transparent; }
+  .tabs a.on { color: var(--tab-active); border-bottom-color: var(--tab-active); }
+
+  .from { font-size: .8rem; color: var(--muted); margin: 8px 0 12px; }
+
+  /* ---------- Contenu ---------- */
+  .content { font-size: 0.95rem; line-height: 1.65; }
+  .content p { margin: .5em 0 1em; }
+  .content h2 {
+    font-family: var(--serif); font-weight: normal; font-size: 1.5rem;
+    margin: 1.1em 0 .3em; padding-bottom: 2px; border-bottom: 1px solid var(--border);
+  }
+  .content h3 { font-size: 1.05rem; font-weight: bold; margin: 1em 0 .2em; }
+  .content ul { padding-left: 1.6em; }
+  .edit { font-family: var(--sans); font-size: .8rem; margin-left: 10px; }
+  .edit::before { content: "[ "; color: var(--muted); } .edit::after { content: " ]"; color: var(--muted); }
+
+  sup.ref { font-size: .72em; line-height: 0; }
+  .ref-needed { font-size: .72em; vertical-align: super; line-height: 0; white-space: nowrap; }
+  .ref-needed a { font-style: italic; }
+
+  .banner {
+    display: flex; gap: 12px; align-items: center; margin: 0 0 14px; padding: 8px 12px;
+    background: var(--banner-bg); border: 1px solid var(--border-light); border-left: 8px solid var(--banner-border); font-size: .85rem;
+  }
+  .banner .ico { font-size: 26px; }
+
+  .hatnote { font-style: italic; padding-left: 1.6em; margin-bottom: .6em; color: var(--text); font-size: .9rem; }
+
+  /* Infobox */
+  .infobox {
+    float: right; clear: right; width: 290px; margin: 0 0 16px 20px;
+    border: 1px solid var(--border); background: var(--box-bg); font-size: .82rem; line-height: 1.45;
+    border-collapse: collapse;
+  }
+  .infobox caption { font-size: 1.1rem; font-weight: bold; padding: 6px; background: #d9c69a; color: #202122; border: 1px solid var(--border); border-bottom: 0; }
+  .infobox td, .infobox th { padding: 4px 8px; vertical-align: top; text-align: left; border-top: 1px solid var(--border-light); }
+  .infobox th { width: 40%; }
+  .infobox .img { text-align: center; padding: 10px; font-size: 80px; line-height: 1; }
+  .infobox .legend { text-align: center; font-size: .78rem; color: var(--muted); }
+  .infobox .sub { text-align: center; background: #ece2c9; color: #202122; font-weight: bold; }
+
+  /* Image vignette */
+  .thumb { float: right; clear: right; margin: 4px 0 12px 20px; width: 222px; border: 1px solid var(--border-light); background: var(--box-bg); padding: 3px; font-size: .8rem; }
+  .thumb .pic { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 64px; background: var(--bg); }
+  .thumb .cap { padding: 4px 3px 2px; line-height: 1.4; }
+
+  /* Tableau « wikitable » */
+  table.wikitable { border-collapse: collapse; margin: 1em 0; background: var(--box-bg); font-size: .88rem; }
+  table.wikitable th, table.wikitable td { border: 1px solid var(--border); padding: 4px 10px; }
+  table.wikitable th { background: var(--bg-alt); text-align: center; }
+
+  blockquote.citation { margin: 1em 2em; padding: 0 0 0 14px; border-left: 4px solid var(--border-light); font-family: var(--serif); font-size: 1rem; }
+  blockquote.citation footer { font-family: var(--sans); font-size: .82rem; color: var(--muted); margin-top: 4px; }
+
+  ol.refs { font-size: .85rem; padding-left: 2em; }
+  ol.refs li:target { background: rgba(51,102,204,.15); }
+
+  .navbox { clear: both; margin-top: 24px; border: 1px solid var(--border); font-size: .82rem; }
+  .navbox .nb-title { background: #ccf; color: #202122; text-align: center; font-weight: bold; padding: 4px; }
+  .navbox .nb-row { display: grid; grid-template-columns: 140px 1fr; border-top: 2px solid var(--bg); }
+  .navbox .nb-row > div:first-child { background: #ddf; color: #202122; font-weight: bold; padding: 4px 8px; text-align: right; }
+  .navbox .nb-row > div:last-child { padding: 4px 8px; background: var(--box-bg); }
+
+  .catlinks { clear: both; margin-top: 18px; padding: 6px 10px; border: 1px solid var(--border); background: var(--box-bg); font-size: .82rem; }
+  .catlinks a:not(:last-child)::after { content: " | "; color: var(--muted); }
+
+  footer.site { border-top: 1px solid var(--border-light); margin-top: 24px; padding-top: 12px; font-size: .75rem; color: var(--muted); }
+  footer.site p { margin: 4px 0; }
+  footer.site .links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+
+  @media (max-width: 860px) {
+    .page { grid-template-columns: 1fr; padding: 0 16px; }
+    .sidebar { display: none; position: static; }
+    .sidebar.open { display: block; }
+    .header { padding: 8px 16px; flex-wrap: wrap; gap: 10px; }
+    .search { order: 3; max-width: none; flex-basis: 100%; }
+    .user-links { display: none; }
+    .infobox, .thumb { float: none; width: 100%; margin: 0 0 16px; }
+    .navbox .nb-row { grid-template-columns: 1fr; }
+    .navbox .nb-row > div:first-child { text-align: left; }
+    blockquote.citation { margin: 1em 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <button class="burger" aria-label="Menu" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <a class="logo" href="index.html">
+    <!-- Logo : globe-puzzle maison (pas le vrai logo, exprès) -->
+    <svg class="logo-globe" viewBox="0 0 100 100" aria-hidden="true">
+      <defs><radialGradient id="g" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#9aa0a6"/></radialGradient></defs>
+      <circle cx="50" cy="50" r="44" fill="url(#g)" stroke="#555" stroke-width="2"/>
+      <path d="M6 50h88M50 6v88M17 25c20 8 46 8 66 0M17 75c20-8 46-8 66 0" fill="none" stroke="#555" stroke-width="1.5"/>
+      <path d="M58 6 L94 50 L50 50 Z" fill="#fff" opacity=".9"/>
+      <text x="61" y="40" font-family="Georgia,serif" font-size="22" fill="#333">?!</text>
+    </svg>
+    <span class="logo-text">
+      <!-- ✏️ À MODIFIER : nom et slogan du site -->
+      <span class="logo-name">Wikipédouille</span>
+      <span class="logo-tag">L'encyclopédie approximative</span>
+    </span>
+  </a>
+  <form class="search" onsubmit="event.preventDefault(); alert('Aucun résultat. Comme d\'habitude.');">
+    <input type="search" placeholder="Rechercher sur Wikipédouille">
+    <button>Rechercher</button>
+  </form>
+  <nav class="user-links">
+    <a href="#">Faire un don de chaussettes</a>
+    <a href="#">Créer un compte</a>
+    <a href="#">Se connecter</a>
+  </nav>
+</header>
+
+<div class="page">
+  <aside class="sidebar">
+    <h4>Sommaire</h4>
+    <ul class="toc" id="toc"><li><a href="#top">Début</a></li></ul>
+    <h4>Navigation</h4>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="wikipedouille.html">Article au hasard</a></li>
+      <li><a href="#">Articles douteux</a></li>
+      <li><a href="#">Bistro</a></li>
+    </ul>
+    <h4>Apparence</h4>
+    <button class="theme-toggle" onclick="toggleTheme()">Clair / sombre</button>
+  </aside>
+
+  <main id="top">
+    <!-- ✏️ À MODIFIER : titre de l'article -->
+    <h1 class="title">Chaussette orpheline <span class="langs">🌐 42 langues (dont 3 inventées)</span></h1>
+
+    <div class="tabs">
+      <div><a class="on" href="#">Article</a><a href="#">Discussion</a></div>
+      <div><a class="on" href="#">Lire</a><a href="#">Modifier</a><a href="#">Voir l'historique</a></div>
+    </div>
+
+    <div class="from">Un article de Wikipédouille, l'encyclopédie que personne n'a relue.</div>
+
+    <!-- ✏️ À MODIFIER : tout le contenu de l'article, jusqu'à la fin de .content -->
+    <div class="content">
+
+      <div class="banner">
+        <span class="ico">🧦</span>
+        <div><b>Cet article est une ébauche concernant le linge.</b> Vous pouvez partager vos connaissances en l'améliorant, ou en retrouvant l'autre chaussette.</div>
+      </div>
+
+      <div class="hatnote">Pour les articles homonymes, voir <a href="#">Chaussette (homonymie)</a> et <a class="new" href="#">Orphelin (machine à laver)</a>.</div>
+
+      <table class="infobox">
+        <caption>Chaussette orpheline</caption>
+        <tr><td colspan="2" class="img">🧦</td></tr>
+        <tr><td colspan="2" class="legend">Spécimen photographié en 2019, peu avant sa disparition.</td></tr>
+        <tr><td colspan="2" class="sub">Classification</td></tr>
+        <tr><th>Règne</th><td>Textile</td></tr>
+        <tr><th>Famille</th><td>Bonneterie</td></tr>
+        <tr><th>Statut</th><td>Seule, mais digne</td></tr>
+        <tr><td colspan="2" class="sub">Caractéristiques</td></tr>
+        <tr><th>Habitat</th><td>Fond du tambour, dessous du lit, quatrième dimension</td></tr>
+        <tr><th>Pointure</th><td>Variable selon l'humeur</td></tr>
+        <tr><th>Prédateur</th><td>Machine à laver (présumée)</td></tr>
+        <tr><th>Population</th><td>≈ 8,4 milliards<sup class="ref"><a href="#note-1">[1]</a></sup></td></tr>
+      </table>
+
+      <p>La <b>chaussette orpheline</b> (du latin <i>socca solitaria</i>) est une chaussette dont la jumelle a disparu dans des circonstances jamais élucidées. Phénomène domestique universel, elle est considérée par de nombreux chercheurs comme la <a href="#">preuve la plus tangible</a> de l'existence d'univers parallèles<span class="ref-needed">[<a href="#">réf. nécessaire</a>]</span>.</p>
+
+      <p>On estime qu'un foyer moyen abrite entre trois et dix-sept chaussettes orphelines, généralement conservées dans un tiroir spécial « au cas où », pratique dont l'efficacité n'a jamais été démontrée<sup class="ref"><a href="#note-2">[2]</a></sup>.</p>
+
+      <h2 id="histoire">Histoire<a class="edit" href="#">modifier</a></h2>
+
+      <div class="thumb">
+        <div class="pic">🌀</div>
+        <div class="cap">Vue d'artiste du portail présumé situé au fond d'un tambour de machine à laver.</div>
+      </div>
+
+      <h3 id="antiquite">Antiquité</h3>
+      <p>Les premières mentions remontent à l'Égypte ancienne, où des hiéroglyphes représentent un scribe fouillant désespérément sous un sarcophage. Les Romains, plus pragmatiques, portaient des sandales, ce qui explique en partie la stabilité de l'Empire.</p>
+
+      <h3 id="epoque-moderne">Époque moderne</h3>
+      <p>L'invention de la machine à laver en 1851 marque une explosion du phénomène. Son inventeur aurait déclaré dans ses mémoires :</p>
+      <blockquote class="citation">
+        « J'ai mis deux chaussettes. Il en est ressorti une. Je ne comprends pas ce que j'ai créé. »
+        <footer>— Inventeur anonyme, carnets personnels (apocryphes)</footer>
+      </blockquote>
+
+      <h2 id="theories">Théories sur la disparition<a class="edit" href="#">modifier</a></h2>
+      <p>Plusieurs hypothèses s'affrontent au sein de la communauté scientifique (soit deux personnes sur un forum) :</p>
+      <ul>
+        <li><b>Hypothèse du joint de hublot</b> : la chaussette serait aspirée entre le tambour et la cuve.</li>
+        <li><b>Hypothèse de l'évasion</b> : la chaussette, lassée de la routine, partirait refaire sa vie.</li>
+        <li><b>Hypothèse quantique</b> : la chaussette existe et n'existe pas tant qu'on n'a pas ouvert le tiroir.</li>
+        <li><b>Hypothèse du chat</b> : la plus probable, mais personne n'ose la confirmer.</li>
+      </ul>
+
+      <table class="wikitable">
+        <tr><th>Hypothèse</th><th>Crédibilité</th><th>Soutenue par</th></tr>
+        <tr><td>Joint de hublot</td><td>Moyenne</td><td>Les plombiers</td></tr>
+        <tr><td>Évasion</td><td>Faible</td><td>Les romantiques</td></tr>
+        <tr><td>Quantique</td><td>« Oui et non »</td><td>Un physicien fatigué</td></tr>
+        <tr><td>Le chat</td><td>Élevée</td><td>Tout le monde, en silence</td></tr>
+      </table>
+
+      <h2 id="culture">Dans la culture populaire<a class="edit" href="#">modifier</a></h2>
+      <p>La chaussette orpheline a inspiré de nombreuses œuvres, dont le célèbre roman <i><a class="new" href="#">Cent ans de solitude (pied gauche)</a></i> et la chanson à succès <i>Où es-tu, ma moitié ?</i>, classée numéro un dans trois laveries automatiques.</p>
+
+      <h2 id="voir-aussi">Voir aussi<a class="edit" href="#">modifier</a></h2>
+      <ul>
+        <li><a href="#">Stylo qui ne marche plus mais qu'on garde</a></li>
+        <li><a href="#">Tupperware sans couvercle</a></li>
+        <li><a class="new" href="#">Câble USB de provenance inconnue</a></li>
+      </ul>
+
+      <h2 id="notes">Notes et références<a class="edit" href="#">modifier</a></h2>
+      <ol class="refs">
+        <li id="note-1">↑ Recensement effectué en comptant les chaussettes d'un seul tiroir puis en multipliant « au feeling ».</li>
+        <li id="note-2">↑ <i>Le Tiroir et l'Espoir</i>, Éditions du Linge Sale, 2003, p. 12.</li>
+      </ol>
+
+      <div class="navbox">
+        <div class="nb-title">Mystères domestiques non résolus</div>
+        <div class="nb-row"><div>Linge</div><div><a href="#">Chaussette orpheline</a> · <a href="#">Pull qui rétrécit</a> · <a href="#">Mouchoir dans la machine</a></div></div>
+        <div class="nb-row"><div>Cuisine</div><div><a href="#">Tupperware sans couvercle</a> · <a href="#">Cuillère disparue</a> · <a class="new" href="#">Tiroir à bazar</a></div></div>
+        <div class="nb-row"><div>Électronique</div><div><a href="#">Télécommande dans le canapé</a> · <a class="new" href="#">Câble USB de provenance inconnue</a></div></div>
+      </div>
+
+      <div class="catlinks">
+        <b>Catégories :</b>
+        <a href="#">Linge</a><a href="#">Mystère non résolu</a><a href="#">Univers parallèle</a><a href="#">Article à sourcer d'urgence</a>
+      </div>
+    </div>
+    <!-- fin ✏️ -->
+
+    <footer class="site">
+      <p>La dernière modification de cette page a été faite le 25 octobre 2026 à 03:14 par quelqu'un qui aurait mieux fait de dormir.</p>
+      <p>Les textes sont disponibles sous licence « Fais-en ce que tu veux, mais cite-moi ». Toute ressemblance avec une encyclopédie sérieuse est purement visuelle.</p>
+      <div class="links"><a href="#">Politique de confidentialité</a><a href="#">À propos de Wikipédouille</a><a href="#">Avertissements</a><a href="#">Version mobile</a></div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Sommaire automatique à partir des titres de l'article
+  (function () {
+    const toc = document.getElementById('toc');
+    const heads = document.querySelectorAll('.content h2[id], .content h3[id]');
+    heads.forEach(h => {
+      const li = document.createElement('li');
+      li.className = h.tagName === 'H3' ? 'lvl3' : 'lvl2';
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.childNodes[0].textContent.trim();
+      li.appendChild(a); toc.appendChild(li);
+    });
+    const links = [...toc.querySelectorAll('a')];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    heads.forEach(h => obs.observe(h));
+  })();
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    const dark = root.dataset.theme
+      ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  }
+  try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</body>
+</html>
