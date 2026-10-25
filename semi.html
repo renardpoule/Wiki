@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semi (araignée) — Wikipédouille</title>
+<!--
+  GABARIT « ENCYCLOPÉDIE » POUR BLOGS ET PAGES HUMORISTIQUES
+  ----------------------------------------------------------
+  Pour faire un nouvel article : copie ce fichier et modifie
+  uniquement ce qui est entre les commentaires  ✏️ À MODIFIER.
+  Le sommaire (à gauche) se génère tout seul à partir des <h2>/<h3>.
+  Les notes [1], [2]… : <sup class="ref"><a href="#note-1">[1]</a></sup>
+  et un <li id="note-1"> dans la section « Notes et références ».
+-->
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text: #202122;
+    --muted: #54595d;
+    --border: #a2a9b1;
+    --border-light: #c8ccd1;
+    --link: #3366cc;
+    --link-visited: #795cb2;
+    --link-new: #d73333;
+    --box-bg: #f8f9fa;
+    --banner-bg: #fef6e7;
+    --banner-border: #fc3;
+    --tab-active: #202122;
+    --serif: "Linux Libertine", "Georgia", "Times", "Source Serif Pro", serif;
+    --sans: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Lato", "Helvetica", "Arial", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101418; --bg-alt: #1a1d21; --text: #eaecf0; --muted: #a2a9b1;
+      --border: #54595d; --border-light: #3a3f44; --link: #88a3e8;
+      --link-visited: #a799cd; --link-new: #fd7865; --box-bg: #1a1d21;
+      --banner-bg: #2a2416; --banner-border: #8a6d1e; --tab-active: #eaecf0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101418; --bg-alt: #1a1d21; --text: #eaecf0; --muted: #a2a9b1;
+    --border: #54595d; --border-light: #3a3f44; --link: #88a3e8;
+    --link-visited: #a799cd; --link-new: #fd7865; --box-bg: #1a1d21;
+    --banner-bg: #2a2416; --banner-border: #8a6d1e; --tab-active: #eaecf0;
+  }
+
+  * { box-sizing: border-box; }
+  html { font-size: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 0.875rem; line-height: 1.6;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:visited { color: var(--link-visited); }
+  a.new { color: var(--link-new); }
+
+  /* ---------- En-tête ---------- */
+  .header {
+    display: flex; align-items: center; gap: 16px;
+    max-width: 1440px; margin: 0 auto; padding: 8px 24px;
+  }
+  .burger { background: none; border: 0; color: var(--text); font-size: 20px; cursor: pointer; padding: 6px; border-radius: 2px; }
+  .burger:hover { background: var(--bg-alt); }
+  .logo { display: flex; align-items: center; gap: 10px; color: var(--text) !important; text-decoration: none !important; }
+  .logo-globe { width: 46px; height: 46px; flex: none; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-name { font-family: var(--serif); font-size: 1.35rem; letter-spacing: .02em; font-variant: small-caps; }
+  .logo-tag { font-family: var(--serif); font-size: .78rem; color: var(--muted); }
+  .search { flex: 1; max-width: 560px; display: flex; }
+  .search input {
+    flex: 1; padding: 6px 10px; font: inherit; color: var(--text); background: var(--bg);
+    border: 1px solid var(--border); border-right: 0; border-radius: 2px 0 0 2px;
+  }
+  .search button {
+    padding: 6px 12px; font: inherit; font-weight: bold; color: var(--text); background: var(--bg-alt);
+    border: 1px solid var(--border); border-radius: 0 2px 2px 0; cursor: pointer;
+  }
+  .user-links { margin-left: auto; display: flex; gap: 14px; font-size: .8rem; white-space: nowrap; }
+
+  /* ---------- Mise en page ---------- */
+  .page { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 24px; max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+  .sidebar { position: sticky; top: 12px; align-self: start; padding-top: 16px; font-size: .82rem; }
+  .sidebar h4 { margin: 0 0 6px; font-size: .82rem; color: var(--muted); font-weight: bold; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; }
+  .sidebar ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .sidebar li { margin: 4px 0; }
+  .toc li.lvl3 { padding-left: 12px; }
+  .toc a.active { color: var(--text); font-weight: bold; }
+  .theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text); font: inherit; padding: 3px 8px; border-radius: 2px; cursor: pointer; }
+
+  main { min-width: 0; padding-bottom: 48px; }
+
+  h1.title {
+    font-family: var(--serif); font-weight: normal; font-size: 1.85rem; line-height: 1.3;
+    margin: 16px 0 0; padding-bottom: 4px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .langs { font-family: var(--sans); font-size: .8rem; color: var(--link); cursor: pointer; }
+
+  .tabs { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); font-size: .82rem; flex-wrap: wrap; }
+  .tabs div { display: flex; gap: 18px; }
+  .tabs a { display: inline-block; padding: 8px 0 6px; color: var(--link); border-bottom: 2px solid transparent; }
+  .tabs a.on { color: var(--tab-active); border-bottom-color: var(--tab-active); }
+
+  .from { font-size: .8rem; color: var(--muted); margin: 8px 0 12px; }
+
+  /* ---------- Contenu ---------- */
+  .content { font-size: 0.95rem; line-height: 1.65; }
+  .content p { margin: .5em 0 1em; }
+  .content h2 {
+    font-family: var(--serif); font-weight: normal; font-size: 1.5rem;
+    margin: 1.1em 0 .3em; padding-bottom: 2px; border-bottom: 1px solid var(--border);
+  }
+  .content h3 { font-size: 1.05rem; font-weight: bold; margin: 1em 0 .2em; }
+  .content ul { padding-left: 1.6em; }
+  .edit { font-family: var(--sans); font-size: .8rem; margin-left: 10px; }
+  .edit::before { content: "[ "; color: var(--muted); } .edit::after { content: " ]"; color: var(--muted); }
+
+  sup.ref { font-size: .72em; line-height: 0; }
+  .ref-needed { font-size: .72em; vertical-align: super; line-height: 0; white-space: nowrap; }
+  .ref-needed a { font-style: italic; }
+
+  .banner {
+    display: flex; gap: 12px; align-items: center; margin: 0 0 14px; padding: 8px 12px;
+    background: var(--banner-bg); border: 1px solid var(--border-light); border-left: 8px solid var(--banner-border); font-size: .85rem;
+  }
+  .banner .ico { font-size: 26px; }
+
+  .hatnote { font-style: italic; padding-left: 1.6em; margin-bottom: .6em; color: var(--text); font-size: .9rem; }
+
+  /* Infobox */
+  .infobox {
+    float: right; clear: right; width: 290px; margin: 0 0 16px 20px;
+    border: 1px solid var(--border); background: var(--box-bg); font-size: .82rem; line-height: 1.45;
+    border-collapse: collapse;
+  }
+  .infobox caption { font-size: 1.1rem; font-weight: bold; padding: 6px; background: #d9c69a; color: #202122; border: 1px solid var(--border); border-bottom: 0; }
+  .infobox td, .infobox th { padding: 4px 8px; vertical-align: top; text-align: left; border-top: 1px solid var(--border-light); }
+  .infobox th { width: 40%; }
+  .infobox .img { text-align: center; padding: 10px; font-size: 80px; line-height: 1; }
+  .infobox .legend { text-align: center; font-size: .78rem; color: var(--muted); }
+  .infobox .sub { text-align: center; background: #ece2c9; color: #202122; font-weight: bold; }
+
+  /* Image vignette */
+  .thumb { float: right; clear: right; margin: 4px 0 12px 20px; width: 222px; border: 1px solid var(--border-light); background: var(--box-bg); padding: 3px; font-size: .8rem; }
+  .thumb .pic { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 64px; background: var(--bg); }
+  .thumb .cap { padding: 4px 3px 2px; line-height: 1.4; }
+
+  /* Tableau « wikitable » */
+  table.wikitable { border-collapse: collapse; margin: 1em 0; background: var(--box-bg); font-size: .88rem; }
+  table.wikitable th, table.wikitable td { border: 1px solid var(--border); padding: 4px 10px; }
+  table.wikitable th { background: var(--bg-alt); text-align: center; }
+
+  blockquote.citation { margin: 1em 2em; padding: 0 0 0 14px; border-left: 4px solid var(--border-light); font-family: var(--serif); font-size: 1rem; }
+  blockquote.citation footer { font-family: var(--sans); font-size: .82rem; color: var(--muted); margin-top: 4px; }
+
+  ol.refs { font-size: .85rem; padding-left: 2em; }
+  ol.refs li:target { background: rgba(51,102,204,.15); }
+
+  .navbox { clear: both; margin-top: 24px; border: 1px solid var(--border); font-size: .82rem; }
+  .navbox .nb-title { background: #ccf; color: #202122; text-align: center; font-weight: bold; padding: 4px; }
+  .navbox .nb-row { display: grid; grid-template-columns: 140px 1fr; border-top: 2px solid var(--bg); }
+  .navbox .nb-row > div:first-child { background: #ddf; color: #202122; font-weight: bold; padding: 4px 8px; text-align: right; }
+  .navbox .nb-row > div:last-child { padding: 4px 8px; background: var(--box-bg); }
+
+  .catlinks { clear: both; margin-top: 18px; padding: 6px 10px; border: 1px solid var(--border); background: var(--box-bg); font-size: .82rem; }
+  .catlinks a:not(:last-child)::after { content: " | "; color: var(--muted); }
+
+  footer.site { border-top: 1px solid var(--border-light); margin-top: 24px; padding-top: 12px; font-size: .75rem; color: var(--muted); }
+  footer.site p { margin: 4px 0; }
+  footer.site .links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+
+  @media (max-width: 860px) {
+    .page { grid-template-columns: 1fr; padding: 0 16px; }
+    .sidebar { display: none; position: static; }
+    .sidebar.open { display: block; }
+    .header { padding: 8px 16px; flex-wrap: wrap; gap: 10px; }
+    .search { order: 3; max-width: none; flex-basis: 100%; }
+    .user-links { display: none; }
+    .infobox, .thumb { float: none; width: 100%; margin: 0 0 16px; }
+    .navbox .nb-row { grid-template-columns: 1fr; }
+    .navbox .nb-row > div:first-child { text-align: left; }
+    blockquote.citation { margin: 1em 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <button class="burger" aria-label="Menu" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <a class="logo" href="index.html">
+    <!-- Logo : globe-puzzle maison (pas le vrai logo, exprès) -->
+    <svg class="logo-globe" viewBox="0 0 100 100" aria-hidden="true">
+      <defs><radialGradient id="g" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#9aa0a6"/></radialGradient></defs>
+      <circle cx="50" cy="50" r="44" fill="url(#g)" stroke="#555" stroke-width="2"/>
+      <path d="M6 50h88M50 6v88M17 25c20 8 46 8 66 0M17 75c20-8 46-8 66 0" fill="none" stroke="#555" stroke-width="1.5"/>
+      <path d="M58 6 L94 50 L50 50 Z" fill="#fff" opacity=".9"/>
+      <text x="61" y="40" font-family="Georgia,serif" font-size="22" fill="#333">?!</text>
+    </svg>
+    <span class="logo-text">
+      <!-- ✏️ À MODIFIER : nom et slogan du site -->
+      <span class="logo-name">Wikipédouille</span>
+      <span class="logo-tag">L'encyclopédie approximative</span>
+    </span>
+  </a>
+  <form class="search" onsubmit="event.preventDefault(); alert('Aucun résultat. Comme d\'habitude.');">
+    <input type="search" placeholder="Rechercher sur Wikipédouille">
+    <button>Rechercher</button>
+  </form>
+  <nav class="user-links">
+    <a href="#">Faire un don de chaussettes</a>
+    <a href="#">Créer un compte</a>
+    <a href="#">Se connecter</a>
+  </nav>
+</header>
+
+<div class="page">
+  <aside class="sidebar">
+    <h4>Sommaire</h4>
+    <ul class="toc" id="toc"><li><a href="#top">Début</a></li></ul>
+    <h4>Navigation</h4>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="wikipedouille.html">Article au hasard</a></li>
+      <li><a href="semi.html">Semi (araignée)</a></li>
+      <li><a href="#">Articles douteux</a></li>
+      <li><a href="#">Bistro</a></li>
+    </ul>
+    <h4>Apparence</h4>
+    <button class="theme-toggle" onclick="toggleTheme()">Clair / sombre</button>
+  </aside>
+
+  <main id="top">
+    <!-- ✏️ À MODIFIER : titre de l'article -->
+    <h1 class="title">Semi (araignée) <span class="langs">🌐 8 langues (une par patte)</span></h1>
+
+    <div class="tabs">
+      <div><a class="on" href="#">Article</a><a href="#">Discussion</a></div>
+      <div><a class="on" href="#">Lire</a><a href="#">Modifier</a><a href="#">Voir l'historique</a></div>
+    </div>
+
+    <div class="from">Un article de Wikipédouille, l'encyclopédie que personne n'a relue.</div>
+
+    <!-- ✏️ À MODIFIER : tout le contenu de l'article, jusqu'à la fin de .content -->
+    <div class="content">
+
+      <div class="banner">
+        <span class="ico">🕷️</span>
+        <div><b>Cet article concerne une espèce potentiellement dangereuse.</b> Ne tentez pas de la caresser, de la nourrir après minuit ou de lui demander son âge.</div>
+      </div>
+
+      <div class="hatnote">« Semi » redirige ici. Pour le camion, voir <a class="new" href="#">Semi-remorque</a>. Pour la moitié de quelque chose, voir <a href="#">Demi</a>.</div>
+
+      <table class="infobox">
+        <caption>Semi</caption>
+        <tr><td colspan="2" class="img"><img src="images/semi.webp" alt="Une Semi adulte, vue de face, en posture d'intimidation" style="width:100%;height:auto;display:block"></td></tr>
+        <tr><td colspan="2" class="legend">Spécimen adulte en posture d'intimidation, photographié en laboratoire juste avant que le photographe ne démissionne.</td></tr>
+        <tr><td colspan="2" class="sub">Classification</td></tr>
+        <tr><th>Règne</th><td>Animalia (de justesse)</td></tr>
+        <tr><th>Embranchement</th><td>Arthropoda</td></tr>
+        <tr><th>Classe</th><td>Arachnida</td></tr>
+        <tr><th>Ordre</th><td>Araneae</td></tr>
+        <tr><th>Famille</th><td>Cephalanthropidae</td></tr>
+        <tr><th>Genre</th><td><i>Semia</i></td></tr>
+        <tr><td colspan="2" class="sub">Nom binominal</td></tr>
+        <tr><td colspan="2" style="text-align:center"><i><b>Semia faciesirata</b></i><br><small>(Dubreuil &amp; Pastèque, 1987)</small></td></tr>
+        <tr><td colspan="2" class="sub">Caractéristiques</td></tr>
+        <tr><th>Envergure</th><td>80 à 140 cm (pattes comprises)</td></tr>
+        <tr><th>Masse</th><td>12 à 18 kg, dont 5 kg de cheveux</td></tr>
+        <tr><th>Longévité</th><td>Inconnue (aucune n'a accepté de donner son âge)</td></tr>
+        <tr><th>Régime</th><td>Omnivore, avec une préférence marquée pour les chips</td></tr>
+        <tr><td colspan="2" class="sub">Statut de conservation</td></tr>
+        <tr><td colspan="2" style="text-align:center">🟠 <b>Inquiétante</b><br><small>(pour les autres espèces)</small><sup class="ref"><a href="#note-1">[1]</a></sup></td></tr>
+      </table>
+
+      <p>La <b>Semi</b> (<i>Semia faciesirata</i>), parfois appelée <b>araignée-visage</b> ou <b>tête-qui-marche</b>, est une espèce d'arachnide de grande taille de la famille des Cephalanthropidae, caractérisée par la présence d'une <a href="#">tête d'apparence humaine</a> en lieu et place du céphalothorax. Elle est la seule espèce connue à cumuler huit pattes, deux chélicères et une frange.</p>
+
+      <p>Décrite pour la première fois en 1987 dans un sous-sol de Clermont-Ferrand, l'espèce reste mal connue, principalement parce que les chercheurs qui l'étudient ont une fâcheuse tendance à changer de discipline au bout de quelques semaines<sup class="ref"><a href="#note-2">[2]</a></sup>. Son expression faciale permanente, que les éthologues qualifient de « contrariée », est au centre de nombreux débats scientifiques.</p>
+
+      <h2 id="etymologie">Étymologie<a class="edit" href="#">modifier</a></h2>
+      <p>Le nom vernaculaire « Semi » proviendrait du cri émis par l'animal lorsqu'il est dérangé, une sorte de sifflement aigu transcrit « <i>sssémiiii</i> » par ses découvreurs. Une hypothèse concurrente veut que le nom vienne du latin <i>semi</i> (« à moitié »), l'animal étant à moitié araignée, à moitié humain, et à moitié de mauvaise humeur — soit trois moitiés, ce qui a toujours posé problème aux mathématiciens<span class="ref-needed">[<a href="#">réf. nécessaire</a>]</span>.</p>
+      <p>L'épithète spécifique <i>faciesirata</i> signifie « au visage irrité ».</p>
+
+      <h2 id="description">Description<a class="edit" href="#">modifier</a></h2>
+
+      <h3 id="morphologie">Morphologie générale</h3>
+      <p>Le corps de la Semi se divise en deux parties :</p>
+      <ul>
+        <li>le <b>céphalothorax facial</b>, ou <i>prosoma humanoïde</i>, qui porte une tête aux traits humains, avec deux yeux, un nez, une bouche dotée d'une dentition complète (32 dents, aucune carie à ce jour) et une chevelure noire abondante ;</li>
+        <li>l'<b>abdomen</b>, ou <i>opisthosoma</i>, de couleur beige à rouge sombre, d'aspect charnu, dont la texture a été décrite comme « franchement pas engageante ».</li>
+      </ul>
+      <p>Huit pattes articulées, longues et brunâtres, se terminent chacune par une griffe noire et effilée. Deux appendices antérieurs, plus courts et plus robustes, servent à la préhension, à la défense et, selon certains observateurs, à se recoiffer.</p>
+
+      <div class="thumb">
+        <div class="pic">👁️👄👁️</div>
+        <div class="cap">Schéma des trois expressions faciales recensées : contrariée, très contrariée, et « tu m'as regardée ? ».</div>
+      </div>
+
+      <h3 id="tete">La tête</h3>
+      <p>La tête est l'organe le plus étudié de l'espèce. Contrairement aux araignées classiques, qui possèdent jusqu'à huit yeux simples, la Semi n'en possède que deux, mais ils sont d'une expressivité remarquable. Leur champ de vision est limité, compensé par une frange qui, paradoxalement, le réduit encore davantage.</p>
+      <p>La chevelure, composée de kératine comme chez l'humain, pousse d'environ 1,2 cm par mois. Les spécimens captifs exigent un entretien régulier ; en milieu naturel, la Semi se coiffe en se frottant contre l'écorce des arbres ou les tapis de salle de bain.</p>
+      <p>Les muscles faciaux sont fonctionnels mais semblent bloqués en position de rictus. Une étude de 2011 a montré qu'une Semi présentée à un chaton n'a modifié son expression que de 3 %<sup class="ref"><a href="#note-3">[3]</a></sup>.</p>
+
+      <h3 id="dimorphisme">Dimorphisme sexuel</h3>
+      <p>Aucun dimorphisme sexuel n'a pu être établi. Toutes les Semi observées à ce jour présentent le même visage, ce qui soulève des questions troublantes que la communauté scientifique préfère ne pas creuser.</p>
+
+      <h2 id="comportement">Comportement<a class="edit" href="#">modifier</a></h2>
+
+      <h3 id="locomotion">Locomotion</h3>
+      <p>La Semi se déplace avec une rapidité surprenante, atteignant 25 km/h en ligne droite et 40 km/h lorsqu'elle entend un paquet de chips s'ouvrir. Elle est capable de grimper aux murs et aux plafonds, d'où elle aime observer les humains en silence pendant plusieurs heures.</p>
+
+      <h3 id="communication">Communication</h3>
+      <p>Bien que dotée d'une bouche et de cordes vocales rudimentaires, la Semi ne parle pas. Elle communique par :</p>
+      <ul>
+        <li>des grincements de dents (signal d'avertissement) ;</li>
+        <li>des soupirs prolongés (agacement) ;</li>
+        <li>un léger haussement du sourcil gauche (mépris profond) ;</li>
+        <li>le cliquetis rythmé de ses griffes sur le carrelage, que certains linguistes rapprochent du morse.</li>
+      </ul>
+      <blockquote class="citation">
+        « Après six mois d'écoute, j'ai pu traduire ses cliquetis. Le message le plus fréquent est : “Qu'est-ce que tu regardes ?” »
+        <footer>— Pr. Hélène Dubreuil, <i>Mémoires d'une arachnologue reconvertie dans la poterie</i>, 2004</footer>
+      </blockquote>
+
+      <h3 id="alimentation">Alimentation</h3>
+      <p>La Semi est omnivore et opportuniste. Elle tisse des toiles rudimentaires, peu efficaces, qu'elle semble utiliser davantage comme hamac que comme piège. Elle se nourrit principalement d'insectes, de petits rongeurs, de fruits trop mûrs et, dès qu'elle en a l'occasion, de <a href="#">chips au paprika</a>. Elle mâche la bouche ouverte.</p>
+
+      <table class="wikitable">
+        <tr><th>Aliment</th><th>Fréquence observée</th><th>Réaction</th></tr>
+        <tr><td>Insectes</td><td>Quotidienne</td><td>Indifférence</td></tr>
+        <tr><td>Souris</td><td>Hebdomadaire</td><td>Légère satisfaction</td></tr>
+        <tr><td>Brocolis</td><td>Jamais (refus)</td><td>Grincement de dents</td></tr>
+        <tr><td>Chips au paprika</td><td>Dès que possible</td><td>Seul sourire jamais documenté<sup class="ref"><a href="#note-4">[4]</a></sup></td></tr>
+      </table>
+
+      <h3 id="reproduction">Reproduction</h3>
+      <p>La reproduction de la Semi n'a jamais été observée directement, les spécimens refusant toute activité en présence d'une caméra. Les femelles (présumées) pondent des cocons de soie contenant de 3 à 6 œufs, chacun de la taille d'un pamplemousse. Les jeunes, appelés <b>semillons</b>, éclosent avec une tête déjà chevelue et une expression déjà contrariée, ce qui suggère que ce trait est inné et non acquis.</p>
+
+      <h2 id="repartition">Répartition et habitat<a class="edit" href="#">modifier</a></h2>
+      <p>L'espèce est présente principalement en Europe de l'Ouest, avec des populations signalées en France, en Belgique et dans au moins un placard de Lausanne. Elle affectionne les milieux sombres, frais et carrelés : caves, parkings souterrains, salles de bain et entrepôts désaffectés. Des observations isolées ont été rapportées sous des lits d'enfants, mais celles-ci n'ont jamais pu être confirmées par un adulte.</p>
+
+      <h2 id="humains">Relations avec l'être humain<a class="edit" href="#">modifier</a></h2>
+
+      <h3 id="danger">Dangerosité</h3>
+      <p>La Semi n'est pas venimeuse. Sa morsure, bien que douloureuse, est surtout humiliante. Le principal danger qu'elle représente est d'ordre psychologique : 87 % des personnes ayant croisé son regard déclarent « se sentir jugées » pendant plusieurs jours<sup class="ref"><a href="#note-5">[5]</a></sup>.</p>
+
+      <h3 id="captivite">En captivité</h3>
+      <p>Quelques particuliers ont tenté d'élever des Semi comme animaux de compagnie. L'expérience est généralement déconseillée : l'animal exige un terrarium de 4 m², un shampoing hebdomadaire, un approvisionnement constant en chips et ne manifeste en retour aucune forme de reconnaissance. Il est en outre impossible de trouver quelqu'un pour le garder pendant les vacances.</p>
+
+      <h2 id="culture">Dans la culture populaire<a class="edit" href="#">modifier</a></h2>
+      <ul>
+        <li>La Semi apparaît dans le film d'horreur <i><a class="new" href="#">Huit pattes et une frange</a></i> (1994), qui a connu un succès d'estime dans les vidéoclubs du Puy-de-Dôme.</li>
+        <li>L'expression « faire la tête de Semi » désigne, dans certaines régions, le fait de bouder de manière particulièrement intense.</li>
+        <li>Une mascotte en peluche a été commercialisée en 2009, puis rapidement retirée après des plaintes de parents.</li>
+      </ul>
+
+      <h2 id="voir-aussi">Voir aussi<a class="edit" href="#">modifier</a></h2>
+      <ul>
+        <li><a href="wikipedouille.html">Chaussette orpheline</a> (autre mystère de la salle de bain)</li>
+        <li><a href="#">Arachnophobie</a></li>
+        <li><a class="new" href="#">Visagophobie</a></li>
+        <li><a class="new" href="#">Chips au paprika</a></li>
+      </ul>
+
+      <h2 id="notes">Notes et références<a class="edit" href="#">modifier</a></h2>
+      <ol class="refs">
+        <li id="note-1">↑ Union internationale pour la conservation des choses bizarres (UICCB), <i>Liste orange des espèces qui mettent mal à l'aise</i>, 2022.</li>
+        <li id="note-2">↑ H. Dubreuil et J. Pastèque, « Description d'un arachnide céphalanthrope nouveau », <i>Bulletin de la Société entomologique du Puy-de-Dôme</i>, vol. 12, 1987, p. 3-4 (article interrompu).</li>
+        <li id="note-3">↑ M. Grosjean, « Réponse émotionnelle de <i>Semia faciesirata</i> face à des stimuli mignons », <i>Revue d'éthologie peu recommandable</i>, 2011.</li>
+        <li id="note-4">↑ Photographie floue, prise en 2016 ; l'authenticité du sourire est contestée.</li>
+        <li id="note-5">↑ Sondage réalisé auprès de 15 personnes, dont 13 ont refusé d'en parler davantage.</li>
+      </ol>
+
+      <div class="navbox">
+        <div class="nb-title">Arachnides improbables</div>
+        <div class="nb-row"><div>Cephalanthropidae</div><div><a href="semi.html">Semi</a> · <a class="new" href="#">Semi des cavernes</a> · <a class="new" href="#">Semi naine (douteuse)</a></div></div>
+        <div class="nb-row"><div>Apparentés</div><div><a class="new" href="#">Araignée-moustache</a> · <a class="new" href="#">Faucheux à lunettes</a> · <a class="new" href="#">Mygale chauve</a></div></div>
+      </div>
+
+      <div class="catlinks">
+        <b>Catégories :</b>
+        <a href="#">Araignée</a><a href="#">Espèce décrite en 1987</a><a href="#">Créature qui vous juge</a><a href="#">Faune des salles de bain</a><a href="#">Article à sourcer d'urgence</a>
+      </div>
+    </div>
+    <!-- fin ✏️ -->
+
+    <footer class="site">
+      <p>La dernière modification de cette page a été faite le 25 octobre 2026 à 02:47 par un chercheur qui dort désormais avec la lumière allumée.</p>
+      <p>Les textes sont disponibles sous licence « Fais-en ce que tu veux, mais cite-moi ». Toute ressemblance avec une encyclopédie sérieuse est purement visuelle.</p>
+      <div class="links"><a href="#">Politique de confidentialité</a><a href="#">À propos de Wikipédouille</a><a href="#">Avertissements</a><a href="#">Version mobile</a></div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Sommaire automatique à partir des titres de l'article
+  (function () {
+    const toc = document.getElementById('toc');
+    const heads = document.querySelectorAll('.content h2[id], .content h3[id]');
+    heads.forEach(h => {
+      const li = document.createElement('li');
+      li.className = h.tagName === 'H3' ? 'lvl3' : 'lvl2';
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.childNodes[0].textContent.trim();
+      li.appendChild(a); toc.appendChild(li);
+    });
+    const links = [...toc.querySelectorAll('a')];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    heads.forEach(h => obs.observe(h));
+  })();
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    const dark = root.dataset.theme
+      ? root.dataset.theme === 'dark'
+      : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  }
+  try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</body>
+</html>
